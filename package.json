@@ -7,5 +7,8 @@
   "license": "MPL-2.0",
   "dependencies": {
     "azure-storage": "KevinGrandon/azure-storage-node#append_pos_default"
+  },
+  "scripts": {
+  	"start": "node index.js"
   }
 }
