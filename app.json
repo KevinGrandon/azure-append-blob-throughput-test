@@ -1,0 +1,5 @@
+{
+  "name": "Azure Append Blob Throughput Test",
+  "description": "Tests Azure Append Blobs",
+  "repository": "https://github.com/KevinGrandon/azure-append-blob-throughput-test"
+}
