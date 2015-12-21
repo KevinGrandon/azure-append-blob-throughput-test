@@ -1,12 +1,13 @@
 var azure = require('azure-storage')
 
-var content = 'It was the best of times, it was the worst of times, it was the age of wisdom, it was the age of foolishness, it was the epoch of belief, it was the epoch of incredulity, it was the season of Light, it was the season of Darkness, it was the spring of hope, it was the winter of despair, we had everything before us, we had nothing before us, we were all going direct to Heaven, we were all going direct the other way--in short, the period was so far like the present period, that some of its noisiest authorities insisted on its being received, for good or for evil, in the superlative degree of comparison only.'
+var content = 'It was the best of times, it was the worst of times, it was the age of wisdom, it was the age of foolishness, it was the epoch of belief, it was the epoch of incredulity, it was the season of Light, it was the season of Darkness, it was the spring of hope, it was the winter of despair, we had everything before us, we had nothing before us, we were all going direct to Heaven, we were all going direct the other way--in short, the period was so far like the present period, that some of its noisiest authorities insisted on its being received, for good or for evil, in the superlative degree of comparison only.\n'
 
 var blobService = azure.createBlobService()
 var containerName = 'testcontainer'
-var blobName = 'testthroughput'
+var blobName = 'testthroughput2'
 
 var iterations = 0
+var start = null
 const MAX_ITERATIONS = 1000000
 
 var bootstrap = (callback) => {
@@ -19,6 +20,7 @@ var bootstrap = (callback) => {
       if (err) {
         console.log('error creating blob', err)
       }
+      start = Date.now()
       callback()
     })
   })
@@ -26,11 +28,15 @@ var bootstrap = (callback) => {
 
 var append = () => {
   iterations++
-  blobService.appendBlockFromText(containerName, blobName, line, (err, blob) => {
+  blobService.appendBlockFromText(containerName, blobName, content, (err, blob) => {
     if (err) {
       console.error(err);
     }
     if (iterations < MAX_ITERATIONS) {
+      if (iterations%10 === 0) {
+        var duration = Date.now() - start
+        console.log('Performed ' + iterations + ' iterations in ' + (duration/1000) + ' seconds.')
+      }
       queueAppend()
     }
   })
