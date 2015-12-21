@@ -1,0 +1,11 @@
+{
+  "name": "azure-append-blob-throughput-test",
+  "version": "1.0.0",
+  "description": "Tries to hammer azure with blob append requests.",
+  "main": "index.js",
+  "author": "Kevin Grandon <kevingrandon@yahoo.com>",
+  "license": "MPL-2.0",
+  "dependencies": {
+    "azure-storage": "KevinGrandon/azure-storage-node#append_pos_default"
+  }
+}
