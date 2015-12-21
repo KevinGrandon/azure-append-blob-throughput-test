@@ -4,4 +4,6 @@
 
 Tries to hammer azure with blob append requests. This script will create an append blob and append a bunch of stuff to it.
 
-You will need to define two environment variables: AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_ACCESS_KEY.
+You will need to define two environment variables: AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_ACCESS_KEY for azure access.
+
+`APPEND_TIMEOUT` defines the timeout before append attempts.

@@ -43,7 +43,7 @@ var append = () => {
 }
 
 var queueAppend = () => {
-  setTimeout(append, 100)
+  setTimeout(append, process.env.APPEND_TIMEOUT || 100)
 }
 
 bootstrap(queueAppend)
